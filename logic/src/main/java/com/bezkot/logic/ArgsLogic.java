@@ -10,9 +10,8 @@ public class ArgsLogic {
     /**
      * Возвращает первый попавшийся аргумент, отличный от NULL.
      * Если же все аргументы равны NULL, результатом тоже будет NULL.
-     * @param args
-     * @return
-     * @param <T>
+     * @param args проверяемые аргументы
+     * @return первый попавшийся не NULL объект, иначе NULL
      */
     @SafeVarargs
     public static <T> T coalesce(T... args) {
@@ -28,9 +27,9 @@ public class ArgsLogic {
     }
 
     /**
-     * Все переданные объекты не равны NULL.
-     * @param args
-     * @return
+     * Все переданные аргументы не равны NULL.
+     * @param args проверяемые аргументы
+     * @return true - все переданные аргументы не равны NULL, false - присутствует NULL аргумент
      */
     @SafeVarargs
     public static <T> boolean allNotNull(T... args) {
@@ -46,9 +45,9 @@ public class ArgsLogic {
     }
 
     /**
-     * Любой из переданных объектов не равен NULL.
-     * @param args
-     * @return
+     * Любой из переданных аргументы не равен NULL.
+     * @param args проверяемые аргументы
+     * @return true - найден элемент со значением не NULL среди проверяемых аргументов, false - все аргументы равны NULL
      */
     @SafeVarargs
     public static <T> boolean anyNotNull(T... args) {
@@ -64,9 +63,9 @@ public class ArgsLogic {
     }
 
     /**
-     * Все переданные объекты равны NULL.
-     * @param args
-     * @return
+     * Все переданные аргументы равны NULL.
+     * @param args проверяемые аргументы
+     * @return true - все переданные аргументы равны NULL, false - присутствует не NULL аргумент
      */
     @SafeVarargs
     public static <T> boolean allNull(T... args) {
@@ -74,9 +73,9 @@ public class ArgsLogic {
     }
 
     /**
-     * Любой из переданных объектов равен NULL.
-     * @param args
-     * @return
+     * Любой из переданных аргументы равен NULL.
+     * @param args проверяемые аргументы
+     * @return true - найден элемент со значением NULL среди проверяемых аргументов, false - все аргументы не NULL
      */
     @SafeVarargs
     public static <T> boolean anyNull(T... args) {
@@ -86,9 +85,8 @@ public class ArgsLogic {
     /**
      * Проверяет, существует ли значение у объекта.
      * Пустые строки, коллекции и карты считаются не прошедшими проверку.
-     * @param value
-     * @return
-     * @param <T>
+     * @param value проверяемая сущность
+     * @return true - значение присутствует, иначе - false
      */
     public static <T> boolean valueExist(T value) {
         return value != null

@@ -69,23 +69,27 @@ public class DateLogic {
 
     /**
      * Проверяемый параметр входит в диапазон, ВКЛЮЧАЯ границы диапазона.
+     * Начало проверяемого диапазона должно быть меньше или равно концу проверяемого диапазона,
+     * в противном случае - последующая логика не отрабатывает, а в качестве результата выводится FALSE.
      * @param check проверяемый параметр
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
      */
     public static boolean inRangeIncludeBounds(LocalDate check, LocalDate start, LocalDate end) {
-        return moreOrEqual(check, start) && lessOrEqual(check, end);
+        return lessOrEqual(start, end) && moreOrEqual(check, start) && lessOrEqual(check, end);
     }
 
     /**
      * Проверяемый параметр входит в диапазон, ИСКЛЮЧАЯ границы диапазона.
+     * Начало проверяемого диапазона должно быть меньше конца проверяемого диапазона,
+     * в противном случае - последующая логика не отрабатывает, а в качестве результата выводится FALSE.
      * @param check проверяемый параметр
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
      */
     public static boolean inRangeExcludeBounds(LocalDate check, LocalDate start, LocalDate end) {
-        return more(check, start) && less(check, end);
+        return less(start, end) && more(check, start) && less(check, end);
     }
 }

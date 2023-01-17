@@ -8,7 +8,6 @@ import static com.bezkot.logic.TimeLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TimeLogicTest {
-
     private final LocalTime lt_12_30_22 = LocalTime.of(12, 30, 22);
     private final LocalTime lt_18_15_04 = LocalTime.of(18, 15, 4);
     private final LocalTime lt_21_22_56 = LocalTime.of(21, 22, 56);
@@ -83,6 +82,5 @@ public class TimeLogicTest {
     @Test
     void inRangeExcludeBounds_False() {
         assertFalse(inRangeExcludeBounds(LocalTime.of(12, 30, 22), lt_12_30_22, lt_18_15_04));
-
     }
 }
