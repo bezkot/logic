@@ -38,11 +38,11 @@ public class BigDecimalLogicTest {
 
     @Test
     void notEqual_True() {
-        assertFalse(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.30)));
+        assertTrue(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.31)));
     }
     @Test
     void notEqual_False() {
-        assertTrue(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.31)));
+        assertFalse(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.30)));
     }
 
     @Test
