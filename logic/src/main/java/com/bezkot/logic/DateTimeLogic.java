@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 
 /**
- * Обёртка над логическими операциями для LocalDateTime, LocalDate и LocalTime.
+ * Обёртка над логическими операциями для LocalDateTime.
  */
 public class DateTimeLogic {
     /**
