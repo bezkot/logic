@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-
-import static com.bezkot.logic.DateLogic.*;
-
+import static com.bezkot.logic.BaseLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DateLogicTest {
@@ -24,21 +22,21 @@ public class DateLogicTest {
     }
 
     @Test
-    void less_True() {
-        assertTrue(less(ld_2022_11_02, ld_2022_12_31));
+    void lessThan_True() {
+        assertTrue(lessThan(ld_2022_11_02, ld_2022_12_31));
     }
     @Test
-    void less_False() {
-        assertFalse(less(ld_2022_12_31, ld_2022_11_02));
+    void lessThan_False() {
+        assertFalse(lessThan(ld_2022_12_31, ld_2022_11_02));
     }
 
     @Test
-    void more_True() {
-        assertTrue(more(ld_2023_01_17, ld_2022_11_02));
+    void greaterThan_True() {
+        assertTrue(greaterThan(ld_2023_01_17, ld_2022_11_02));
     }
     @Test
-    void more_False() {
-        assertFalse(more(ld_2022_11_02, ld_2023_01_17));
+    void greaterThan_False() {
+        assertFalse(greaterThan(ld_2022_11_02, ld_2023_01_17));
     }
 
     @Test
@@ -51,21 +49,21 @@ public class DateLogicTest {
     }
 
     @Test
-    void lessOrEqual_True() {
-        assertTrue(lessOrEqual(ld_2022_11_02, ld_2022_12_31));
+    void lessThanOrEqual_True() {
+        assertTrue(lessThanOrEqual(ld_2022_11_02, ld_2022_12_31));
     }
     @Test
-    void lessOrEqual_False() {
-        assertFalse(lessOrEqual(ld_2023_01_17, ld_2022_11_02));
+    void lessThanOrEqual_False() {
+        assertFalse(lessThanOrEqual(ld_2023_01_17, ld_2022_11_02));
     }
 
     @Test
-    void moreOrEqual_True() {
-        assertTrue(moreOrEqual(ld_2023_01_17, ld_2022_11_02));
+    void greaterThanOrEqual_True() {
+        assertTrue(greaterThanOrEqual(ld_2023_01_17, ld_2022_11_02));
     }
     @Test
-    void moreOrEqual_False() {
-        assertFalse(moreOrEqual(ld_2022_11_02, ld_2022_12_31));
+    void greaterThanOrEqual_False() {
+        assertFalse(greaterThanOrEqual(ld_2022_11_02, ld_2022_12_31));
     }
 
     @Test

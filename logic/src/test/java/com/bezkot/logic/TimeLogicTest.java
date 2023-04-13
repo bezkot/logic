@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
-import static com.bezkot.logic.TimeLogic.*;
+import static com.bezkot.logic.BaseLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TimeLogicTest {
@@ -22,21 +22,21 @@ public class TimeLogicTest {
     }
 
     @Test
-    void less_True() {
-        assertTrue(less(lt_12_30_22, lt_18_15_04));
+    void lessThan_True() {
+        assertTrue(lessThan(lt_12_30_22, lt_18_15_04));
     }
     @Test
-    void less_False() {
-        assertFalse(less(lt_18_15_04, lt_12_30_22));
+    void lessThan_False() {
+        assertFalse(lessThan(lt_18_15_04, lt_12_30_22));
     }
 
     @Test
-    void more_True() {
-        assertTrue(more(lt_21_22_56, lt_12_30_22));
+    void greaterThan_True() {
+        assertTrue(greaterThan(lt_21_22_56, lt_12_30_22));
     }
     @Test
-    void more_False() {
-        assertFalse(more(lt_12_30_22, lt_21_22_56));
+    void greaterThan_False() {
+        assertFalse(greaterThan(lt_12_30_22, lt_21_22_56));
     }
 
     @Test
@@ -49,21 +49,21 @@ public class TimeLogicTest {
     }
 
     @Test
-    void lessOrEqual_True() {
-        assertTrue(lessOrEqual(lt_12_30_22, lt_18_15_04));
+    void lessThanOrEqual_True() {
+        assertTrue(lessThanOrEqual(lt_12_30_22, lt_18_15_04));
     }
     @Test
-    void lessOrEqual_False() {
-        assertFalse(lessOrEqual(lt_21_22_56, lt_12_30_22));
+    void lessThanOrEqual_False() {
+        assertFalse(lessThanOrEqual(lt_21_22_56, lt_12_30_22));
     }
 
     @Test
-    void moreOrEqual_True() {
-        assertTrue(moreOrEqual(lt_21_22_56, lt_12_30_22));
+    void greaterThanOrEqual_True() {
+        assertTrue(greaterThanOrEqual(lt_21_22_56, lt_12_30_22));
     }
     @Test
-    void moreOrEqual_False() {
-        assertFalse(moreOrEqual(lt_12_30_22, lt_18_15_04));
+    void greaterThanOrEqual_False() {
+        assertFalse(greaterThanOrEqual(lt_12_30_22, lt_18_15_04));
     }
 
     @Test

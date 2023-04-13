@@ -10,7 +10,6 @@ import static com.bezkot.logic.ArgsLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArgsLogicTest {
-
     @Test
     void coalesce_Nulls() {
         Integer elem1 = null;

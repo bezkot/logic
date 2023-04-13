@@ -1,19 +1,23 @@
 package com.bezkot.logic;
 
-import java.time.LocalTime;
-
 /**
- * Обёртка над логическими операциями для LocalTime.
+ * Базовые логически операции.
+ * @since 1.0.2.0
  */
-public class TimeLogic {
+public class BaseLogic {
     /**
      * Аргумент 'a' равен аргументу 'b'.
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean equal(LocalTime a, LocalTime b) {
-        return new CompareLogic<LocalTime>() {}.equal(a, b);
+    public static <T extends Comparable<T>> boolean equal(T a, T b) {
+        if (a == null || b == null) {
+            return false;
+        }
+        return a.compareTo(b) == 0;
     }
 
     /**
@@ -21,9 +25,18 @@ public class TimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean less(LocalTime a, LocalTime b) {
-        return new CompareLogic<LocalTime>() {}.less(a, b);
+    public static <T extends Comparable<T>> boolean lessThan(T a, T b) {
+        if (a == null && b != null) {
+            return true;
+        }
+        if (b == null) {
+            return false;
+        }
+
+        return a.compareTo(b) < 0;
     }
 
     /**
@@ -31,9 +44,18 @@ public class TimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean more(LocalTime a, LocalTime b) {
-        return new CompareLogic<LocalTime>() {}.more(a, b);
+    public static <T extends Comparable<T>> boolean greaterThan(T a, T b) {
+        if (a != null && b == null) {
+            return true;
+        }
+        if (a == null) {
+            return false;
+        }
+
+        return a.compareTo(b) > 0;
     }
 
     /**
@@ -41,9 +63,10 @@ public class TimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
-
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean notEqual(LocalTime a, LocalTime b) {
+    public static <T extends Comparable<T>> boolean notEqual(T a, T b) {
         return !equal(a, b);
     }
 
@@ -52,9 +75,11 @@ public class TimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean lessOrEqual(LocalTime a, LocalTime b) {
-        return less(a, b) || equal(a, b);
+    public static <T extends Comparable<T>> boolean lessThanOrEqual(T a, T b) {
+        return lessThan(a, b) || equal(a, b);
     }
 
     /**
@@ -62,9 +87,11 @@ public class TimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean moreOrEqual(LocalTime a, LocalTime b) {
-        return more(a, b) || equal(a, b);
+    public static <T extends Comparable<T>> boolean greaterThanOrEqual(T a, T b) {
+        return greaterThan(a, b) || equal(a, b);
     }
 
     /**
@@ -75,9 +102,11 @@ public class TimeLogic {
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean inRangeIncludeBounds(LocalTime check, LocalTime start, LocalTime end) {
-        return lessOrEqual(start, end) && moreOrEqual(check, start) && lessOrEqual(check, end);
+    public static <T extends Comparable<T>> boolean inRangeIncludeBounds(T check, T start, T end) {
+        return lessThanOrEqual(start, end) && greaterThanOrEqual(check, start) && lessThanOrEqual(check, end);
     }
 
     /**
@@ -88,8 +117,11 @@ public class TimeLogic {
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean inRangeExcludeBounds(LocalTime check, LocalTime start, LocalTime end) {
-        return less(start, end) && more(check, start) && less(check, end);
+    public static <T extends Comparable<T>> boolean inRangeExcludeBounds(T check, T start, T end) {
+        return lessThan(start, end) && greaterThan(check, start) && lessThan(check, end);
     }
 }
+
