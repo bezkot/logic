@@ -1,20 +1,23 @@
 package com.bezkot.logic;
 
-import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
-
 /**
- * Обёртка над логическими операциями для LocalDateTime, LocalDate и LocalTime.
+ * Базовые логически операции.
+ * @since 1.0.2.0
  */
-public class DateTimeLogic {
+public class BaseLogic {
     /**
      * Аргумент 'a' равен аргументу 'b'.
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean equal(LocalDateTime a, LocalDateTime b) {
-        return new CompareLogic<ChronoLocalDateTime<?>>() {}.equal(a, b);
+    public static <T extends Comparable<T>> boolean equal(T a, T b) {
+        if (a == null || b == null) {
+            return false;
+        }
+        return a.compareTo(b) == 0;
     }
 
     /**
@@ -22,9 +25,18 @@ public class DateTimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean less(LocalDateTime a, LocalDateTime b) {
-        return new CompareLogic<ChronoLocalDateTime<?>>() {}.less(a, b);
+    public static <T extends Comparable<T>> boolean lessThan(T a, T b) {
+        if (a == null && b != null) {
+            return true;
+        }
+        if (b == null) {
+            return false;
+        }
+
+        return a.compareTo(b) < 0;
     }
 
     /**
@@ -32,9 +44,18 @@ public class DateTimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean more(LocalDateTime a, LocalDateTime b) {
-        return new CompareLogic<ChronoLocalDateTime<?>>() {}.more(a, b);
+    public static <T extends Comparable<T>> boolean greaterThan(T a, T b) {
+        if (a != null && b == null) {
+            return true;
+        }
+        if (a == null) {
+            return false;
+        }
+
+        return a.compareTo(b) > 0;
     }
 
     /**
@@ -42,8 +63,10 @@ public class DateTimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean notEqual(LocalDateTime a, LocalDateTime b) {
+    public static <T extends Comparable<T>> boolean notEqual(T a, T b) {
         return !equal(a, b);
     }
 
@@ -52,9 +75,11 @@ public class DateTimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean lessOrEqual(LocalDateTime a, LocalDateTime b) {
-        return less(a, b) || equal(a, b);
+    public static <T extends Comparable<T>> boolean lessThanOrEqual(T a, T b) {
+        return lessThan(a, b) || equal(a, b);
     }
 
     /**
@@ -62,9 +87,11 @@ public class DateTimeLogic {
      * @param a первый аргумент
      * @param b второй аргумент
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean moreOrEqual(LocalDateTime a, LocalDateTime b) {
-        return more(a, b) || equal(a, b);
+    public static <T extends Comparable<T>> boolean greaterThanOrEqual(T a, T b) {
+        return greaterThan(a, b) || equal(a, b);
     }
 
     /**
@@ -75,9 +102,11 @@ public class DateTimeLogic {
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean inRangeIncludeBounds(LocalDateTime check, LocalDateTime start, LocalDateTime end) {
-        return lessOrEqual(start, end) && moreOrEqual(check, start) && lessOrEqual(check, end);
+    public static <T extends Comparable<T>> boolean inRangeIncludeBounds(T check, T start, T end) {
+        return lessThanOrEqual(start, end) && greaterThanOrEqual(check, start) && lessThanOrEqual(check, end);
     }
 
     /**
@@ -88,8 +117,11 @@ public class DateTimeLogic {
      * @param start начало диапазона
      * @param end конец диапазона
      * @return true - условие выполняется, false - условие не выполняется
+     * @param <T> тип проверяемых аргументов, реализующих {@link Comparable}
+     * @since 1.0.2.0
      */
-    public static boolean inRangeExcludeBounds(LocalDateTime check, LocalDateTime start, LocalDateTime end) {
-        return less(start, end) && more(check, start) && less(check, end);
+    public static <T extends Comparable<T>> boolean inRangeExcludeBounds(T check, T start, T end) {
+        return lessThan(start, end) && greaterThan(check, start) && lessThan(check, end);
     }
 }
+

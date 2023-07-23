@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static com.bezkot.logic.DateTimeLogic.*;
+import static com.bezkot.logic.BaseLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DateTimeLogicTest {
@@ -22,21 +22,21 @@ public class DateTimeLogicTest {
     }
 
     @Test
-    void less_True() {
-        assertTrue(less(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
+    void lessThan_True() {
+        assertTrue(lessThan(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
     }
     @Test
-    void less_False() {
-        assertFalse(less(ldt_2022_12_31__18_15_04, ldt_2022_11_02__12_30_22));
+    void lessThan_False() {
+        assertFalse(lessThan(ldt_2022_12_31__18_15_04, ldt_2022_11_02__12_30_22));
     }
 
     @Test
-    void more_True() {
-        assertTrue(more(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
+    void greaterThan_True() {
+        assertTrue(greaterThan(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
     }
     @Test
-    void more_False() {
-        assertFalse(more(ldt_2022_11_02__12_30_22, ldt_2023_01_17__21_22_56));
+    void greaterThan_False() {
+        assertFalse(greaterThan(ldt_2022_11_02__12_30_22, ldt_2023_01_17__21_22_56));
     }
 
     @Test
@@ -49,21 +49,21 @@ public class DateTimeLogicTest {
     }
 
     @Test
-    void lessOrEqual_True() {
-        assertTrue(lessOrEqual(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
+    void lessThanOrEqual_True() {
+        assertTrue(lessThanOrEqual(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
     }
     @Test
-    void lessOrEqual_False() {
-        assertFalse(lessOrEqual(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
+    void lessThanOrEqual_False() {
+        assertFalse(lessThanOrEqual(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
     }
 
     @Test
-    void moreOrEqual_True() {
-        assertTrue(moreOrEqual(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
+    void greaterThanOrEqual_True() {
+        assertTrue(greaterThanOrEqual(ldt_2023_01_17__21_22_56, ldt_2022_11_02__12_30_22));
     }
     @Test
-    void moreOrEqual_False() {
-        assertFalse(moreOrEqual(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
+    void greaterThanOrEqual_False() {
+        assertFalse(greaterThanOrEqual(ldt_2022_11_02__12_30_22, ldt_2022_12_31__18_15_04));
     }
 
     @Test

@@ -8,59 +8,58 @@ import static com.bezkot.logic.BigDecimalLogic.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BigDecimalLogicTest {
-
     @Test
     void equal_True() {
-        assertTrue(equal(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.30)));
+        assertTrue(equal(new BigDecimal("2.3"), new BigDecimal("2.30")));
     }
     @Test
     void equal_False() {
-        assertFalse(equal(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.31)));
+        assertFalse(equal(new BigDecimal("2.3"), new BigDecimal("2.31")));
     }
 
     @Test
-    void less_True() {
-        assertTrue(less(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.35)));
+    void lessThan_True() {
+        assertTrue(lessThan(new BigDecimal("2.3"), new BigDecimal("2.35")));
     }
     @Test
-    void less_False() {
-        assertFalse(less(BigDecimal.valueOf(2.35), BigDecimal.valueOf(2.30)));
+    void lessThan_False() {
+        assertFalse(lessThan(new BigDecimal("2.35"), new BigDecimal("2.30")));
     }
 
     @Test
-    void more_True() {
-        assertTrue(more(BigDecimal.valueOf(2.38), BigDecimal.valueOf(2.35)));
+    void greaterThan_True() {
+        assertTrue(greaterThan(new BigDecimal("2.38"), new BigDecimal("2.35")));
     }
     @Test
-    void more_False() {
-        assertFalse(more(BigDecimal.valueOf(2.35), BigDecimal.valueOf(2.39)));
+    void greaterThan_False() {
+        assertFalse(greaterThan(new BigDecimal("2.35"), new BigDecimal("2.39")));
     }
 
     @Test
     void notEqual_True() {
-        assertTrue(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.31)));
+        assertTrue(notEqual(new BigDecimal("2.3"), new BigDecimal("2.31")));
     }
     @Test
     void notEqual_False() {
-        assertFalse(notEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.30)));
+        assertFalse(notEqual(new BigDecimal("2.3"), new BigDecimal("2.30")));
     }
 
     @Test
-    void lessOrEqual_True() {
-        assertTrue(lessOrEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.44)));
+    void lessThanOrEqual_True() {
+        assertTrue(lessThanOrEqual(new BigDecimal("2.3"), new BigDecimal("2.44")));
     }
     @Test
-    void lessOrEqual_False() {
-        assertFalse(lessOrEqual(BigDecimal.valueOf(2.44), BigDecimal.valueOf(2.30)));
+    void lessThanOrEqual_False() {
+        assertFalse(lessThanOrEqual(new BigDecimal("2.44"), new BigDecimal("2.30")));
     }
 
     @Test
-    void moreOrEqual_True() {
-        assertTrue(moreOrEqual(BigDecimal.valueOf(2.3), BigDecimal.valueOf(2.12)));
+    void greaterThanOrEqual_True() {
+        assertTrue(greaterThanOrEqual(new BigDecimal("2.3"), new BigDecimal("2.12")));
     }
     @Test
-    void moreOrEqual_False() {
-        assertFalse(moreOrEqual(BigDecimal.valueOf(2.12), BigDecimal.valueOf(2.30)));
+    void greaterThanOrEqual_False() {
+        assertFalse(greaterThanOrEqual(new BigDecimal("2.12"), new BigDecimal("2.30")));
     }
 
     @Test
@@ -69,7 +68,7 @@ public class BigDecimalLogicTest {
     }
     @Test
     void isZero_True2() {
-        assertTrue(isZero(BigDecimal.valueOf(0.0)));
+        assertTrue(isZero(new BigDecimal("0.0")));
     }
     @Test
     void isZero_True3() {
@@ -77,24 +76,24 @@ public class BigDecimalLogicTest {
     }
     @Test
     void isZero_False() {
-        assertFalse(isZero(BigDecimal.valueOf(12.435)));
+        assertFalse(isZero(new BigDecimal("12.435")));
     }
 
     @Test
-    void lessZero_True() {
-        assertTrue(lessZero(BigDecimal.valueOf(-2.3)));
+    void lessThanZero_True() {
+        assertTrue(lessThanZero(new BigDecimal("-2.3")));
     }
     @Test
-    void lessZero_False() {
-        assertFalse(lessZero(new BigDecimal("4.345")));
+    void lessThanZero_False() {
+        assertFalse(lessThanZero(new BigDecimal("4.345")));
     }
 
     @Test
-    void moreZero_True() {
-        assertTrue(moreZero(BigDecimal.valueOf(2.3)));
+    void greaterThanZero_True() {
+        assertTrue(greaterThanZero(new BigDecimal("2.3")));
     }
     @Test
-    void moreZero_False() {
-        assertFalse(moreZero(new BigDecimal("-4.345")));
+    void greaterThanZero_False() {
+        assertFalse(greaterThanZero(new BigDecimal("-4.345")));
     }
 }
