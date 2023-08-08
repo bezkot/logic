@@ -2,11 +2,36 @@ plugins {
     id 'java'
 }
 
-group 'com.bezkot.logic'
+group 'com.bezkot'
 version '1.0.2.0'
+
+
+
+def myRepository = System.getProperty("user.home") + "\\.bezkot-repository"
 
 repositories {
     mavenCentral()
+
+    maven {
+        url uri(myRepository)
+    }
+}
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url uri(myRepository)
+            name = "LocalRepo"
+        }
+    }
 }
 
 ext {
@@ -39,6 +64,10 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
+
+
+
+
 
 artifacts {
     archives sourcesJar
