@@ -1,6 +1,7 @@
 package com.bezkot.logic;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Обёртка над логическими операциями типа BigDecimal.
@@ -14,7 +15,7 @@ public class BigDecimalLogic extends BaseLogic {
      * @since 1.0.2.0
      */
     public static boolean isZero(BigDecimal a) {
-        return equal(a, BigDecimal.ZERO);
+        return equal(a, a == null ? BigDecimal.ZERO : BigDecimal.ZERO.setScale(a.scale(), RoundingMode.HALF_EVEN));
     }
 
     /**
@@ -24,7 +25,7 @@ public class BigDecimalLogic extends BaseLogic {
      * @since 1.0.2.0
      */
     public static boolean lessThanZero(BigDecimal a) {
-        return lessThan(a, BigDecimal.ZERO);
+        return lessThan(a, a == null ? BigDecimal.ZERO : BigDecimal.ZERO.setScale(a.scale(), RoundingMode.HALF_EVEN));
     }
 
     /**
@@ -34,6 +35,6 @@ public class BigDecimalLogic extends BaseLogic {
      * @since 1.0.2.0
      */
     public static boolean greaterThanZero(BigDecimal a) {
-        return greaterThan(a, BigDecimal.ZERO);
+        return greaterThan(a, a == null ? BigDecimal.ZERO : BigDecimal.ZERO.setScale(a.scale(), RoundingMode.HALF_EVEN));
     }
 }
